@@ -1,319 +1,416 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Application Tracker</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
 
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            width: 100%;
-        }
+      .container {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        width: 100%;
+      }
 
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            text-align: center;
-        }
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+      }
 
-        .date {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
+      .date {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 14px;
+      }
 
-        .counter-display {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+      .counter-display {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
 
-        .counter-display h2 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
+      .counter-display h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        opacity: 0.9;
+      }
 
-        .counter-display .count {
-            font-size: 72px;
-            font-weight: bold;
-        }
+      .counter-display .count {
+        font-size: 72px;
+        font-weight: bold;
+      }
 
-        .buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
+      .buttons {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
 
-        button {
-            flex: 1;
-            padding: 15px;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+      button {
+        flex: 1;
+        padding: 15px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
 
-        .increment-btn {
-            background: #48bb78;
-            color: white;
-        }
+      .increment-btn {
+        background: #48bb78;
+        color: white;
+      }
 
-        .increment-btn:hover {
-            background: #38a169;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
-        }
+      .increment-btn:hover {
+        background: #38a169;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+      }
 
-        .decrement-btn {
-            background: #f56565;
-            color: white;
-        }
+      .decrement-btn {
+        background: #f56565;
+        color: white;
+      }
 
-        .decrement-btn:hover {
-            background: #e53e3e;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(245, 101, 101, 0.4);
-        }
+      .decrement-btn:hover {
+        background: #e53e3e;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(245, 101, 101, 0.4);
+      }
 
-        .save-btn {
-            width: 100%;
-            background: #4299e1;
-            color: white;
-            margin-bottom: 10px;
-        }
+      .save-btn {
+        width: 100%;
+        background: #4299e1;
+        color: white;
+        margin-bottom: 10px;
+      }
 
-        .save-btn:hover {
-            background: #3182ce;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.4);
-        }
+      .save-btn:hover {
+        background: #3182ce;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(66, 153, 225, 0.4);
+      }
 
-        .download-btn {
-            width: 100%;
-            background: #9f7aea;
-            color: white;
-            margin-bottom: 20px;
-        }
+      .download-btn {
+        width: 100%;
+        background: #9f7aea;
+        color: white;
+        margin-bottom: 20px;
+      }
 
-        .download-btn:hover {
-            background: #805ad5;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(159, 122, 234, 0.4);
-        }
+      .download-btn:hover {
+        background: #805ad5;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(159, 122, 234, 0.4);
+      }
 
-        .history {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 2px solid #e2e8f0;
-        }
+      .history {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 2px solid #e2e8f0;
+      }
 
-        .history h3 {
-            color: #333;
-            margin-bottom: 15px;
-        }
+      .history h3 {
+        color: #333;
+        margin-bottom: 15px;
+      }
 
-        .history-list {
-            max-height: 300px;
-            overflow-y: auto;
-        }
+      .history-list {
+        max-height: 300px;
+        overflow-y: auto;
+      }
 
-        .history-item {
-            background: #f7fafc;
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      .history-item {
+        background: #f7fafc;
+        padding: 12px 15px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        .history-date {
-            color: #4a5568;
-            font-weight: 600;
-        }
+      .history-date {
+        color: #4a5568;
+        font-weight: 600;
+      }
 
-        .history-count {
-            background: #667eea;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
+      .history-count {
+        background: #667eea;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+      }
 
-        .message {
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 14px;
-            display: none;
-        }
+      .message {
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 15px;
+        font-size: 14px;
+        display: none;
+      }
 
-        .message.success {
-            background: #c6f6d5;
-            color: #22543d;
-            display: block;
-        }
+      .message.success {
+        background: #c6f6d5;
+        color: #22543d;
+        display: block;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>📊 Job Application Tracker</h1>
-        <div class="date" id="currentDate"></div>
+      <h1>📊 Job Application Tracker</h1>
+      <div class="date" id="currentDate"></div>
 
-        <div class="counter-display">
-            <h2>Today's Applications</h2>
-            <div class="count" id="counter">0</div>
-        </div>
+      <div class="counter-display">
+        <h2>Today's Applications</h2>
+        <div class="count" id="counter">0</div>
+      </div>
 
-        <div class="buttons">
-            <button class="decrement-btn" onclick="updateCounter(-1)">- Remove</button>
-            <button class="increment-btn" onclick="updateCounter(1)">+ Add One</button>
-        </div>
+      <div class="buttons">
+        <button class="decrement-btn" onclick="updateCounter(-1)">
+          - Remove
+        </button>
+        <button class="increment-btn" onclick="updateCounter(1)">
+          + Add One
+        </button>
+      </div>
 
-        <button class="save-btn" onclick="saveData()">💾 Save Today's Count</button>
-        <button class="download-btn" onclick="downloadCSV()">📥 Download CSV</button>
+      <button class="save-btn" onclick="saveData()">
+        💾 Save Today's Count
+      </button>
+      <button class="download-btn" onclick="downloadCSV()">
+        📥 Download CSV
+      </button>
 
-        <div id="message" class="message"></div>
+      <div id="message" class="message"></div>
 
-        <div class="history">
-            <h3>Application History</h3>
-            <div class="history-list" id="historyList"></div>
-        </div>
+      <div class="history">
+        <h3>Application History</h3>
+        <div class="history-list" id="historyList"></div>
+      </div>
     </div>
 
     <script>
-        let currentCount = 0;
-        let data = {};
+      let currentCount = 0;
+      let data = {};
 
-        function getTodayDate() {
-            const today = new Date();
-            return today.toISOString().split('T')[0];
+      function getTodayDate() {
+        const today = new Date();
+        return today.toISOString().split("T")[0];
+      }
+
+      function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // month is 0-indexed
+        return date.toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+      function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // month is 0-indexed
+        return date.toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+      function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // month is 0-indexed
+        return date.toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+      function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // month is 0-indexed
+        return date.toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+      function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // month is 0-indexed
+        return date.toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+      function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // month is 0-indexed
+        return date.toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+      function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // month is 0-indexed
+        return date.toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+      function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // month is 0-indexed
+        return date.toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+      function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // month is 0-indexed
+        return date.toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+
+      function updateCounter(change) {
+        currentCount = Math.max(0, currentCount + change);
+        document.getElementById("counter").textContent = currentCount;
+      }
+
+      function loadData() {
+        const stored = localStorage.getItem("jobAppData");
+        if (stored) {
+          data = JSON.parse(stored);
         }
 
-        function formatDate(dateStr) {
-                const date = new Date(dateStr + 'T00:00:00Z');
-                return date.toLocaleDateString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                });
-            }
+        const today = getTodayDate();
+        currentCount = data[today] || 0;
+        document.getElementById("counter").textContent = currentCount;
 
-        function updateCounter(change) {
-            currentCount = Math.max(0, currentCount + change);
-            document.getElementById('counter').textContent = currentCount;
+        displayHistory();
+      }
+
+      function saveData() {
+        const today = getTodayDate();
+        data[today] = currentCount;
+
+        localStorage.setItem("jobAppData", JSON.stringify(data));
+        showMessage("Data saved successfully! ✓");
+        displayHistory();
+      }
+
+      function downloadCSV() {
+        if (Object.keys(data).length === 0) {
+          showMessage("No data to download!");
+          return;
         }
 
-        function loadData() {
-            const stored = localStorage.getItem('jobAppData');
-            if (stored) {
-                data = JSON.parse(stored);
-            }
+        // Create CSV content
+        let csvContent = "Date,Applications\n";
 
-            const today = getTodayDate();
-            currentCount = data[today] || 0;
-            document.getElementById('counter').textContent = currentCount;
-            
-            displayHistory();
+        // Sort dates and add to CSV
+        const sortedDates = Object.keys(data).sort();
+        sortedDates.forEach((date) => {
+          csvContent += `${date},${data[date]}\n`;
+        });
+
+        // Create blob and download
+        const blob = new Blob([csvContent], {
+          type: "text/csv;charset=utf-8;",
+        });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+
+        link.setAttribute("href", url);
+        link.setAttribute("download", `job_applications_${getTodayDate()}.csv`);
+        link.style.visibility = "hidden";
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        showMessage("CSV downloaded successfully! ✓");
+      }
+
+      function displayHistory() {
+        const historyList = document.getElementById("historyList");
+        const sortedDates = Object.keys(data).sort().reverse();
+
+        if (sortedDates.length === 0) {
+          historyList.innerHTML =
+            '<div style="text-align: center; color: #a0aec0; padding: 20px;">No saved data yet. Add applications and save!</div>';
+          return;
         }
 
-        function saveData() {
-            const today = getTodayDate();
-            data[today] = currentCount;
-
-            localStorage.setItem('jobAppData', JSON.stringify(data));
-            showMessage('Data saved successfully! ✓');
-            displayHistory();
-        }
-
-        function downloadCSV() {
-            if (Object.keys(data).length === 0) {
-                showMessage('No data to download!');
-                return;
-            }
-
-            // Create CSV content
-            let csvContent = "Date,Applications\n";
-            
-            // Sort dates and add to CSV
-            const sortedDates = Object.keys(data).sort();
-            sortedDates.forEach(date => {
-                csvContent += `${date},${data[date]}\n`;
-            });
-
-            // Create blob and download
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            
-            link.setAttribute('href', url);
-            link.setAttribute('download', `job_applications_${getTodayDate()}.csv`);
-            link.style.visibility = 'hidden';
-            
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            showMessage('CSV downloaded successfully! ✓');
-        }
-
-        function displayHistory() {
-            const historyList = document.getElementById('historyList');
-            const sortedDates = Object.keys(data).sort().reverse();
-
-            if (sortedDates.length === 0) {
-                historyList.innerHTML = '<div style="text-align: center; color: #a0aec0; padding: 20px;">No saved data yet. Add applications and save!</div>';
-                return;
-            }
-
-            historyList.innerHTML = sortedDates.map(date => `
+        historyList.innerHTML = sortedDates
+          .map(
+            (date) => `
                 <div class="history-item">
                     <span class="history-date">${formatDate(date)}</span>
                     <span class="history-count">${data[date]} apps</span>
                 </div>
-            `).join('');
-        }
+            `,
+          )
+          .join("");
+      }
 
-        function showMessage(text) {
-            const messageEl = document.getElementById('message');
-            messageEl.textContent = text;
-            messageEl.className = 'message success';
-            setTimeout(() => {
-                messageEl.style.display = 'none';
-            }, 3000);
-        }
+      function showMessage(text) {
+        const messageEl = document.getElementById("message");
+        messageEl.textContent = text;
+        messageEl.className = "message success";
+        setTimeout(() => {
+          messageEl.style.display = "none";
+        }, 3000);
+      }
 
-        document.getElementById('currentDate').textContent = formatDate(getTodayDate());
-        loadData();
+      document.getElementById("currentDate").textContent =
+        formatDate(getTodayDate());
+      loadData();
     </script>
-</body>
+  </body>
 </html>
