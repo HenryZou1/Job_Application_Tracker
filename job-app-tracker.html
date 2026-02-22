@@ -226,95 +226,14 @@
         return today.toISOString().split("T")[0];
       }
 
-      function formatDate(dateStr) {
-        const [year, month, day] = dateStr.split("-").map(Number);
-        const date = new Date(year, month - 1, day); // month is 0-indexed
-        return date.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-      function formatDate(dateStr) {
-        const [year, month, day] = dateStr.split("-").map(Number);
-        const date = new Date(year, month - 1, day); // month is 0-indexed
-        return date.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-      function formatDate(dateStr) {
-        const [year, month, day] = dateStr.split("-").map(Number);
-        const date = new Date(year, month - 1, day); // month is 0-indexed
-        return date.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-      function formatDate(dateStr) {
-        const [year, month, day] = dateStr.split("-").map(Number);
-        const date = new Date(year, month - 1, day); // month is 0-indexed
-        return date.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-      function formatDate(dateStr) {
-        const [year, month, day] = dateStr.split("-").map(Number);
-        const date = new Date(year, month - 1, day); // month is 0-indexed
-        return date.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-      function formatDate(dateStr) {
-        const [year, month, day] = dateStr.split("-").map(Number);
-        const date = new Date(year, month - 1, day); // month is 0-indexed
-        return date.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-      function formatDate(dateStr) {
-        const [year, month, day] = dateStr.split("-").map(Number);
-        const date = new Date(year, month - 1, day); // month is 0-indexed
-        return date.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-      function formatDate(dateStr) {
-        const [year, month, day] = dateStr.split("-").map(Number);
-        const date = new Date(year, month - 1, day); // month is 0-indexed
-        return date.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-      function formatDate(dateStr) {
-        const [year, month, day] = dateStr.split("-").map(Number);
-        const date = new Date(year, month - 1, day); // month is 0-indexed
-        return date.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
+      function getTodayDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        // Months are 0-indexed, so we add 1 and pad with a leading zero
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
       }
 
       function updateCounter(change) {
